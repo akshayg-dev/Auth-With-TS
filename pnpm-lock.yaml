@@ -171,13 +171,16 @@ importers:
         version: 18.0.9
       drizzle-orm:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)
+        version: 1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)(zod@4.6.7)
       express:
         specifier: ^5.3.0
         version: 5.3.0
       pg:
         specifier: ^8.23.1
         version: 8.23.1
+      zod:
+        specifier: ^4.6.7
+        version: 4.6.7
     devDependencies:
       '@types/express':
         specifier: ^5.0.6
@@ -190,7 +193,7 @@ importers:
         version: 8.23.1
       drizzle-kit:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1))
+        version: 1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)(zod@4.6.7))
       tsc-watch:
         specifier: ^7.2.1
         version: 7.2.1(typescript@7.0.2)
@@ -1080,6 +1083,9 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
+  zod@4.6.7:
+    resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
+
 snapshots:
 
   '@esbuild/aix-ppc64@0.28.2':
@@ -1320,14 +1326,15 @@ snapshots:
 
   dotenv@18.0.9: {}
 
-  drizzle-kit@1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)):
+  drizzle-kit@1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)(zod@4.6.7)):
     optionalDependencies:
-      drizzle-orm: 1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)
+      drizzle-orm: 1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)(zod@4.6.7)
 
-  drizzle-orm@1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1):
+  drizzle-orm@1.0.0-rc.5(@types/pg@8.23.1)(pg@8.23.1)(zod@4.6.7):
     optionalDependencies:
       '@types/pg': 8.23.1
       pg: 8.23.1
+      zod: 4.6.7
 
   dunder-proto@1.0.1:
     dependencies:
@@ -1750,3 +1757,5 @@ snapshots:
   wrappy@1.0.2: {}
 
   xtend@4.0.2: {}
+
+  zod@4.6.7: {}
