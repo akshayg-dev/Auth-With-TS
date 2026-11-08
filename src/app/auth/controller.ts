@@ -4,7 +4,8 @@ import {randomBytes, createHmac} from 'node:crypto'
 import { signinPayloadModel, signupPayloadModel } from "./models.js";
 import { db } from "../../db/index.js";
 import { usersTable } from "../../db/schema.js";
-import { checkHashedPassword, hashPassword } from "../../utils/password.js";
+import { checkHashedPassword, hashPassword } from "./utils/password.js";
+import { createUserToken } from "./utils/token.js";
 
 class AuthenticationController {
     public async handleSignup(req: Request, res: Response) {
@@ -50,8 +51,9 @@ class AuthenticationController {
         })
 
         // TODO: Token Banao
+        const token = createUserToken({id: userSelect.id})
 
-        return res.json({ message: 'Signin Success', data: { token: 1 } })
+        return res.json({ message: 'Signin Success', data: { token: token } })
         
     
         
