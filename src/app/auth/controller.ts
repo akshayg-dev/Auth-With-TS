@@ -6,6 +6,7 @@ import { db } from "../../db/index.js";
 import { usersTable } from "../../db/schema.js";
 import { checkHashedPassword, hashPassword } from "./utils/password.js";
 import { createUserToken } from "./utils/token.js";
+import type { UserTokenPayload } from './utils/token.js'
 
 class AuthenticationController {
     public async handleSignup(req: Request, res: Response) {
@@ -50,13 +51,24 @@ class AuthenticationController {
             message: `user email or password is incorrect`
         })
 
-        // TODO: Token Banao
         const token = createUserToken({id: userSelect.id})
 
         return res.json({ message: 'Signin Success', data: { token: token } })
         
     
         
+    }
+
+    public async handleMe(req: Request, res: Response) {
+        const { id } = (req as Request & { user: UserTokenPayload }).user
+
+        const [userResult] = await db.select().from(usersTable).where(eq(usersTable.id, id))
+
+        return res.json({
+            firstName: userResult?.firstName,
+            lastName: userResult?.lastName,
+            email: userResult?.email
+        })
     }
 }
 

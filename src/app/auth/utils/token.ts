@@ -1,7 +1,7 @@
 import JWT from "jsonwebtoken";
 import 'dotenv/config'
 
-interface UserTokenPayload {
+export interface UserTokenPayload {
     id: string
 }
 
